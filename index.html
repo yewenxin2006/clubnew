@@ -1,0 +1,722 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lighting — 灯光社团</title>
+  <meta name="description" content="一个以灯光、空间与互动媒介为核心的创作社团。">
+  <meta name="theme-color" content="#050505">
+  <link rel="icon" type="image/png" href="./favicon.png">
+
+  <link rel="stylesheet" href="./fonts/fonts.css">
+  <link rel="stylesheet" href="./css/style.css">
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./vendor/three/build/three.module.js",
+      "three/addons/": "./vendor/three/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body data-current-section="hero">
+
+  <div class="loader" id="loader" aria-live="polite">
+    <div class="loader-brand">Lighting</div>
+    <div class="loader-track"><span id="loader-fill"></span></div>
+    <div class="loader-status" id="loader-status">LOADING 0%</div>
+  </div>
+
+  <canvas id="gl" aria-hidden="true"></canvas>
+  <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#hero">Lighting</a>
+    <nav class="main-nav" aria-label="主导航">
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#services">Team</a>
+      <a href="#contact">Join</a>
+    </nav>
+  </header>
+
+  <aside class="scroll-rail" aria-label="页面区域">
+    <a href="#hero" class="rail-item is-active" data-rail="hero"><span></span><em>TOP</em></a>
+    <a href="#projects" class="rail-item" data-rail="projects"><span></span><em>PROJECTS</em></a>
+    <a href="#about" class="rail-item" data-rail="about"><span></span><em>ABOUT</em></a>
+    <a href="#services" class="rail-item" data-rail="services"><span></span><em>TEAM</em></a>
+    <a href="#contact" class="rail-item" data-rail="contact"><span></span><em>JOIN</em></a>
+  </aside>
+
+  <main>
+    <section class="panel panel--hero" id="hero" data-scene="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">NOBILITY / UNITY / CREATIVE</p>
+        <h1>智慧警务
+          <br>创新研究社</h1>
+        <p class="hero-desc">以警务化、实战化、自动化为研发宗旨，致力于将研究成果与智能化警务改革
+          <br>国家安防需求紧密相连，让「智慧警务」高效服务实战。</p>
+      </div>
+
+      <div class="model-hitbox" id="model-hitbox" aria-hidden="true"></div>
+
+      <div class="hero-bottom">
+        <div class="scroll-cue">SCROLL<span></span></div>
+        <div class="news">
+          <p class="news-title">NEWS</p>
+          <ul>
+            <li>
+              <time datetime="2026-09-23">2026 09.23</time>
+              <a href="#" data-survey-open>2026社团招新工作正式启动</a>
+            </li>
+            <li>
+              <time datetime="2026-06-30">2026 06.30</time>
+              <a href="#projects">2026年第十六届MathorCup数学应用挑战赛</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="projects" data-scene="projects">
+      <div class="section-head">
+        <h2>Projects</h2>
+        <span class="section-count">02</span>
+      </div>
+
+      <div class="project-list">
+        <article class="project-item">
+          <div class="project-meta">2026</div>
+          <div class="project-body">
+            <h3>GIS指挥平台</h3>
+            <p>"位置驱动"的社区警务管控台账：重点目标，现场规划、就地触达。</p>
+            <ul class="tags">
+              <li>指挥调度</li>
+              <li>辅助办公</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="project-item">
+          <div class="project-meta">2026</div>
+          <div class="project-body">
+            <h3>警小探Agent</h3>
+            <p>AI驱动的智能办案专家,断网单兵分析系统。</p>
+            <ul class="tags">
+              <li>智能办案</li>
+              <li>辅助办公</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="project-item">
+          <div class="project-meta">2026</div>
+          <div class="project-body">
+            <h3>高斯泼溅3D重建</h3>
+            <p>基于3DGS实现公安案事件现场三维重建,生成数字现场,支撑勘查示证归档。</p>
+            <ul class="tags">
+              <li>现场重现</li>
+              <li>百宝箱</li>
+              <li>保护现场</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel about-panel" id="about" data-scene="about">
+      <div class="about-inner">
+        <p class="eyebrow">ABOUT</p>
+        <h2 class="statement">把不可见的技术，
+          <br>变成可停留的现场。</h2>
+        <p class="about-detail">在这里，遇见更强的自己。敢想敢做，用技术创造价值。</p>
+      </div>
+    </section>
+
+    <section class="panel" id="services" data-scene="services">
+      <div class="section-head">
+        <h2>Team</h2>
+        <span class="section-count">03</span>
+      </div>
+
+      <div class="service-list">
+        <article class="service-item">
+          <span class="num">01</span>
+          <h3>Curiosity</h3>
+          <p>一切创新的起点。不满足于"事情本来就是这样"，总想问一句"为什么不能那样"。
+            <br>对一个研究社来说，成员有没有主动探索未知领域的冲动，比技术基础重要得多，技术可以学，好奇心很难教。</p>
+        </article>
+        <article class="service-item">
+          <span class="num">02</span>
+          <h3>Hands-On</h3>
+          <p>想法不值钱，做出来的东西才值钱。哪怕第一次做得很粗糙、很丑，也比一百个停留在嘴上的方案有意义。</p>
+        </article>
+        <article class="service-item">
+          <span class="num">03</span>
+          <h3>Openness & Unity</h3>
+          <p>愿意说"我不懂"、愿意被别人指出问题、也愿意把自己踩过的坑分享出来。
+            <br>很多好想法不是一个人想出来的，而是在争论和互相补台的过程中长出来的。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel join-panel" id="contact" data-scene="contact">
+      <div class="join-grid">
+        <div>
+          <p class="eyebrow">JOIN US</p>
+          <h2>带着想法来，
+            <br>不用带着答案。</h2>
+          <p class="join-note">每学期初开放招募，不限专业。只要你愿意做实验、搭结构、调试到深夜，都可以加入。</p>
+        </div>
+        <div class="join-actions">
+          <button class="button button--solid" id="survey-open" type="button" data-survey-open>Contact
+            <br>报名问卷
+          </button>
+          <a class="button" href="#projects">See Projects</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="#hero">Lighting</a>
+      </div>
+      <div>
+        <p class="footer-label">MENU</p>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#services">Team</a>
+      </div>
+
+      <div>
+        <p class="footer-label">CONTACT</p>
+        <a href="mailto:yewenxin2006@outlook.com">yewenxin2006@outlook.com</a>
+        <span>Campus Lighting B1</span>
+      </div>
+    </div>
+    <p class="copyright">© 2026 Lighting. All rights reserved.</p>
+  </footer>
+
+  <script>
+    if (location.protocol === "file:") {
+      document.write('<script src="./js/model-data.js"><\/script>');
+    }
+  </script>
+    <script src="./js/projects-photos-data.js"></script>
+  <script src="./js/team-photos-data.js"></script>
+  <script type="module">
+    import * as THREE from "three";
+    import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+    import { MeshoptDecoder } from "three/addons/libs/meshopt_decoder.module.js";
+    import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+
+    const canvas = document.getElementById("gl");
+    const loaderEl = document.getElementById("loader");
+    const loaderFill = document.getElementById("loader-fill");
+    const loaderStatus = document.getElementById("loader-status");
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas,
+      antialias: true,
+      alpha: true,
+      powerPreference: "high-performance"
+    });
+
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.05;
+    renderer.localClippingEnabled = true;
+
+    const scene = new THREE.Scene();
+    scene.background = null;
+
+    const camera = new THREE.PerspectiveCamera(
+      38,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      100
+    );
+    camera.position.set(0, 0, 4.6);
+
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+    const keyLight = new THREE.DirectionalLight(0xffffff, 2.15);
+    keyLight.position.set(3.1, 5.0, 4.2);
+    scene.add(keyLight);
+
+    const fillLight = new THREE.DirectionalLight(0x7f9bff, 0.5);
+    fillLight.position.set(-4.0, -1.5, 2.5);
+    scene.add(fillLight);
+
+    const rimLight = new THREE.DirectionalLight(0xffffff, 1.1);
+    rimLight.position.set(-2.5, 2.8, -4.5);
+    scene.add(rimLight);
+
+    scene.add(new THREE.AmbientLight(0xffffff, 0.32));
+
+    const starCount = 2200;
+    const starPositions = new Float32Array(starCount * 3);
+    const starScales = new Float32Array(starCount);
+    const starTwinkles = new Float32Array(starCount);
+
+    for (let i = 0; i < starCount; i++) {
+      starPositions[i * 3 + 0] = (Math.random() - 0.5) * 34;
+      starPositions[i * 3 + 1] = (Math.random() - 0.5) * 22;
+      starPositions[i * 3 + 2] = -8 - Math.random() * 18;
+      starScales[i] = 0.35 + Math.pow(Math.random(), 1.6) * 1.75;
+      starTwinkles[i] = 0.45 + Math.random() * 1.7;
+    }
+
+    const starGeometry = new THREE.BufferGeometry();
+    starGeometry.setAttribute("position", new THREE.BufferAttribute(starPositions, 3));
+    starGeometry.setAttribute("aScale", new THREE.BufferAttribute(starScales, 1));
+    starGeometry.setAttribute("aTwinkle", new THREE.BufferAttribute(starTwinkles, 1));
+
+    const starUniforms = {
+      uTime: { value: 0 },
+      uPointer: { value: new THREE.Vector2(0, 0) },
+      uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
+      uColor: { value: new THREE.Color(0xdce8ff) }
+    };
+
+    const starMaterial = new THREE.ShaderMaterial({
+      uniforms: starUniforms,
+      vertexShader: `
+        uniform float uTime;
+        uniform vec2 uPointer;
+        uniform float uPixelRatio;
+        attribute float aScale;
+        attribute float aTwinkle;
+        varying float vBrightness;
+
+        void main() {
+          vec4 viewPosition = modelViewMatrix * vec4(position, 1.0);
+          vec4 projectedPosition = projectionMatrix * viewPosition;
+          gl_Position = projectedPosition;
+          gl_PointSize = aScale * uPixelRatio * 38.0 / max(-viewPosition.z, 0.1);
+
+          vec2 screenPosition = projectedPosition.xy / max(projectedPosition.w, 0.001);
+          float pointerDistance = distance(screenPosition, uPointer);
+          float pointerGlow = smoothstep(0.62, 0.0, pointerDistance);
+          float twinkle = 0.62 + 0.38 * sin(uTime * aTwinkle + position.x * 2.4 + position.y * 1.7);
+          vBrightness = (0.30 + 0.42 * pointerGlow) * twinkle;
+        }
+      `,
+      fragmentShader: `
+        uniform vec3 uColor;
+        varying float vBrightness;
+
+        void main() {
+          float star = length(gl_PointCoord - 0.5);
+          float alpha = smoothstep(0.5, 0.0, star) * vBrightness;
+          if (alpha < 0.002) discard;
+          gl_FragColor = vec4(uColor, alpha);
+        }
+      `,
+      transparent: true,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending
+    });
+
+    const stars = new THREE.Points(starGeometry, starMaterial);
+    scene.add(stars);
+
+    const modelGroup = new THREE.Group();
+    scene.add(modelGroup);
+const photoStrips = [];
+
+    function createPhotoStrip(options) {
+      const strip = {
+        group: new THREE.Group(),
+        opacity: 0,
+        ready: false,
+        sceneName: options.sceneName,
+        baseY: options.baseY
+      };
+      strip.group.visible = false;
+      strip.group.position.set(0, options.baseY, options.zPos);
+      scene.add(strip.group);
+
+      strip.layout = function () {
+        if (!strip.ready || !strip.mesh) return;
+        const distance = camera.position.z - strip.group.position.z;
+        const visibleHeight = 2 * Math.tan((camera.fov * Math.PI) / 360) * distance;
+        const visibleWidth = visibleHeight * camera.aspect;
+        strip.mesh.scale.set(visibleWidth, visibleWidth / strip.planeAspect, 1);
+      };
+
+      strip.update = function (delta) {
+        if (!strip.ready) return;
+        strip.layout();
+        const target = activeScene === strip.sceneName ? 1 : 0;
+        strip.opacity += (target - strip.opacity) * Math.min(delta * 2.4, 1);
+        strip.material.opacity = strip.opacity;
+        strip.group.visible = strip.opacity > 0.01;
+        if (strip.group.visible) {
+          strip.texture.offset.x += delta * 0.01;
+          if (strip.texture.offset.x >= 1) strip.texture.offset.x -= 1;
+          strip.group.position.y = strip.baseY + (1 - strip.opacity) * 0.12;
+        }
+      };
+
+      const build = () => {
+        const sources = window[options.dataKey] || {};
+        const names = Object.keys(sources);
+        if (!names.length) return;
+
+        const stripHeight = 720;
+        const gap = 24;
+        const images = [];
+        let pending = names.length;
+
+        const finish = () => {
+          if (!images.length) return;
+          let totalWidth = gap * (images.length - 1);
+          const drawList = images.map(img => {
+            const w = Math.max(1, Math.round(stripHeight * img.naturalWidth / img.naturalHeight));
+            totalWidth += w;
+            return { img, w };
+          });
+
+          const stripCanvas = document.createElement("canvas");
+          stripCanvas.width = totalWidth;
+          stripCanvas.height = stripHeight;
+          const ctx = stripCanvas.getContext("2d");
+          let x = 0;
+          drawList.forEach(item => {
+            ctx.drawImage(item.img, x, 0, item.w, stripHeight);
+            x += item.w + gap;
+          });
+
+          const texture = new THREE.CanvasTexture(stripCanvas);
+          texture.colorSpace = THREE.SRGBColorSpace;
+          texture.wrapS = THREE.RepeatWrapping;
+          texture.wrapT = THREE.ClampToEdgeWrapping;
+          texture.anisotropy = Math.min(4, renderer.capabilities.getMaxAnisotropy());
+
+          const stripAspect = totalWidth / stripHeight;
+          const visiblePhotos = Math.min(3, images.length);
+          const repeatRatio = visiblePhotos / images.length;
+          strip.planeAspect = stripAspect * repeatRatio;
+          texture.repeat.x = repeatRatio;
+
+          strip.material = new THREE.MeshBasicMaterial({
+            map: texture,
+            transparent: true,
+            opacity: 0,
+            toneMapped: false
+          });
+          strip.texture = texture;
+          strip.mesh = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), strip.material);
+          strip.group.add(strip.mesh);
+          strip.ready = true;
+          strip.layout();
+        };
+
+        names.forEach(name => {
+          const img = new Image();
+          img.onload = () => { images.push(img); pending--; if (pending === 0) finish(); };
+          img.onerror = () => { pending--; if (pending === 0) finish(); };
+          img.src = "data" + ":" + "image/jpeg" + ";" + "base64," + sources[name];
+        });
+      };
+
+      build();
+      return strip;
+    }
+
+    photoStrips.push(createPhotoStrip({ sceneName: "projects", dataKey: "PROJECTS_PHOTOS_BASE64", zPos: -5.5, baseY: -0.15 }));
+    photoStrips.push(createPhotoStrip({ sceneName: "services", dataKey: "TEAM_PHOTOS_BASE64", zPos: -5.5, baseY: -0.15 }));
+
+    const cropPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
+
+    const pointer = new THREE.Vector2(0, 0);
+    const pointerTarget = new THREE.Vector2(0, 0);
+    let scrollTarget = 0;
+    let scrollCurrent = 0;
+    let modelHeight = 1;
+
+    const setLoaderProgress = value => {
+      const percent = Math.max(0, Math.min(100, Math.round(value * 100)));
+      loaderFill.style.width = `${percent}%`;
+      loaderStatus.textContent = `LOADING ${percent}%`;
+    };
+
+    const gltfLoader = new GLTFLoader();
+    gltfLoader.setMeshoptDecoder(MeshoptDecoder);
+
+    const MODEL_URL = window.LIGHTING_SIGN_GLB_BASE64
+      ? `data:model/gltf-binary;base64,${window.LIGHTING_SIGN_GLB_BASE64}`
+      : "./models/lighting-sign.glb";
+
+    gltfLoader.load(
+      MODEL_URL,
+      gltf => {
+        const model = gltf.scene;
+        model.traverse(child => {
+          if (!child.isMesh) return;
+
+          child.material.envMapIntensity = 0.85;
+          child.material.roughness = 0.38;
+          child.material.metalness = 0.04;
+          child.material.clippingPlanes = [cropPlane];
+
+          if (child.material.map) {
+            child.material.map.colorSpace = THREE.SRGBColorSpace;
+          }
+        });
+
+        const box = new THREE.Box3().setFromObject(model);
+        const size = box.getSize(new THREE.Vector3());
+        const center = box.getCenter(new THREE.Vector3());
+        modelHeight = Math.max(size.y, 0.001);
+        model.position.sub(center);
+        modelGroup.add(model);
+
+        modelGroup.userData.cropY = -size.y / 2 + size.y * 0.27;
+
+        canvas.classList.add("is-ready");
+        setLoaderProgress(1);
+
+        window.setTimeout(() => {
+          loaderEl.classList.add("is-hidden");
+        }, 260);
+      },
+      event => {
+        if (event.lengthComputable) {
+          setLoaderProgress(event.loaded / event.total);
+        }
+      },
+      error => {
+        console.error(error);
+        loaderStatus.textContent = "3D MODEL FAILED TO LOAD";
+      }
+    );
+
+    const sceneStates = {
+      hero: { x: 0, y: 0, scale: 1.0, rotate: 0.70 },
+      projects: { x: 0.27, y: -0.04, scale: 0.88, rotate: 0.82 },
+      about: { x: 0.30, y: 0.01, scale: 0.76, rotate: 1.65 },
+      services: { x: -0.26, y: -0.05, scale: 0.72, rotate: 2.35 },
+      contact: { x: 0, y: 0, scale: 1.08, rotate: 3.05 }
+    };
+
+    let activeScene = "hero";
+
+    const updateFit = () => {
+      const aspect = window.innerWidth / window.innerHeight;
+      const visibleHeight = 2 * Math.tan((camera.fov * Math.PI) / 360) * camera.position.z;
+      const visibleWidth = visibleHeight * aspect;
+      modelGroup.userData.visibleWidth = visibleWidth;
+      modelGroup.userData.baseScale = (visibleHeight * (window.innerWidth < 860 ? 0.58 : 0.66)) / modelHeight;
+      modelGroup.userData.sceneScale = window.innerWidth < 860 ? 0.66 : 1.0;
+    };
+
+    const resize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      updateFit();
+    };
+
+    resize();
+
+    window.addEventListener("resize", resize, { passive: true });
+
+window.addEventListener("pointermove", event => {
+  pointerTarget.x = (event.clientX / window.innerWidth) * 2 - 1;
+  pointerTarget.y = -((event.clientY / window.innerHeight) * 2 - 1);
+}, { passive: true });
+
+const cursorGlow = document.getElementById("cursor-glow");
+
+window.addEventListener("pointermove", event => {
+  if (!cursorGlow) return;
+  cursorGlow.style.transform = `translate(${event.clientX}px, ${event.clientY}px) translate(-50%, -50%)`;
+  cursorGlow.classList.add("is-active");
+}, { passive: true });
+
+window.addEventListener("pointerleave", () => {
+  cursorGlow?.classList.remove("is-active");
+});
+
+    const panelObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+
+        const sectionId = entry.target.id;
+        activeScene = entry.target.dataset.scene || "hero";
+        document.body.dataset.currentSection = sectionId;
+
+        document.querySelectorAll(".rail-item").forEach(item => {
+          item.classList.toggle("is-active", item.dataset.rail === sectionId);
+        });
+      });
+    }, {
+      rootMargin: "-42% 0px -42% 0px",
+      threshold: 0
+    });
+
+    document.querySelectorAll("[data-scene]").forEach(section => {
+      panelObserver.observe(section);
+    });
+
+const clock = new THREE.Clock();
+const modelHitbox = document.getElementById("model-hitbox");
+const dragRotation = { x: 0, y: 0 };
+const autoRotation = { x: 0, y: 0 };
+const dragVelocity = { x: 0, y: 0 };
+let isDraggingModel = false;
+let lastPointerX = 0;
+let lastPointerY = 0;
+
+if (modelHitbox) {
+  modelHitbox.addEventListener("pointerdown", event => {
+    isDraggingModel = true;
+    modelHitbox.classList.add("is-dragging");
+    lastPointerX = event.clientX;
+    lastPointerY = event.clientY;
+    dragVelocity.x = 0;
+    dragVelocity.y = 0;
+    modelHitbox.setPointerCapture(event.pointerId);
+  });
+
+  modelHitbox.addEventListener("pointermove", event => {
+    if (!isDraggingModel) return;
+
+    const dx = event.clientX - lastPointerX;
+    const dy = event.clientY - lastPointerY;
+    lastPointerX = event.clientX;
+    lastPointerY = event.clientY;
+
+    const rotationY = dx * 0.0045;
+    const rotationX = dy * 0.0028;
+
+    dragRotation.y += rotationY;
+    dragRotation.x = Math.max(-0.55, Math.min(0.55, dragRotation.x + rotationX));
+    dragVelocity.y = rotationY;
+    dragVelocity.x = rotationX;
+  });
+
+  const endModelDrag = () => {
+    isDraggingModel = false;
+    modelHitbox.classList.remove("is-dragging");
+  };
+
+  modelHitbox.addEventListener("pointerup", endModelDrag);
+  modelHitbox.addEventListener("pointercancel", endModelDrag);
+  modelHitbox.addEventListener("lostpointercapture", endModelDrag);
+}
+
+    const animate = () => {
+      const delta = clock.getDelta();
+      const elapsed = clock.elapsedTime;
+      const docHeight = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+      scrollTarget = window.scrollY / docHeight;
+      scrollCurrent += (scrollTarget - scrollCurrent) * Math.min(delta * 6, 1);
+
+      pointer.x += (pointerTarget.x - pointer.x) * Math.min(delta * 3, 1);
+      pointer.y += (pointerTarget.y - pointer.y) * Math.min(delta * 3, 1);
+
+      starUniforms.uTime.value = elapsed;
+      starUniforms.uPointer.value.set(pointer.x, pointer.y);
+      starUniforms.uPixelRatio.value = Math.min(window.devicePixelRatio, 2);
+
+      const state = sceneStates[activeScene] || sceneStates.hero;
+      const width = modelGroup.userData.visibleWidth || 8;
+      const mobileScale = modelGroup.userData.sceneScale || 1;
+      const targetX = state.x * width * mobileScale;
+      const targetY = state.y;
+      const targetScale = (modelGroup.userData.baseScale || 3) * state.scale * mobileScale;
+
+      if (!isDraggingModel) {
+        autoRotation.y += 0.18 * delta;
+        autoRotation.x = Math.sin(elapsed * 0.25) * 0.12;
+
+        dragRotation.y += dragVelocity.y;
+        dragRotation.x += dragVelocity.x;
+        dragVelocity.y *= Math.pow(0.88, delta * 60);
+        dragVelocity.x *= Math.pow(0.88, delta * 60);
+        dragRotation.x += (0 - dragRotation.x) * Math.min(delta * 0.7, 1);
+        dragRotation.x = Math.max(-0.55, Math.min(0.55, dragRotation.x));
+      }
+
+      const targetRotate = state.rotate + dragRotation.y + autoRotation.y;
+
+      modelGroup.position.x += (targetX - modelGroup.position.x) * Math.min(delta * 3, 1);
+      modelGroup.position.y += ((targetY + Math.sin(elapsed * 0.55) * 0.025) - modelGroup.position.y) * Math.min(delta * 3, 1);
+      modelGroup.scale.setScalar(modelGroup.scale.x + (targetScale - modelGroup.scale.x) * Math.min(delta * 3, 1));
+
+      modelGroup.rotation.y += (targetRotate - modelGroup.rotation.y) * Math.min(delta * 2.5, 1);
+      modelGroup.rotation.x += ((pointer.y * 0.08 + dragRotation.x + autoRotation.x) - modelGroup.rotation.x) * Math.min(delta * 2.5, 1);
+      modelGroup.rotation.z = Math.sin(elapsed * 0.28) * 0.012;
+
+      const cropY = modelGroup.userData.cropY;
+      if (Number.isFinite(cropY)) {
+        cropPlane.constant = -(modelGroup.position.y + modelGroup.scale.y * cropY);
+      }
+
+      camera.position.x += (pointer.x * 0.08 - camera.position.x) * Math.min(delta * 2, 1);
+      camera.position.y += (pointer.y * 0.05 - camera.position.y) * Math.min(delta * 2, 1);
+      camera.lookAt(0, 0, 0);
+
+      photoStrips.forEach(function (strip) { strip.update(delta); });
+
+      renderer.render(scene, camera);
+      requestAnimationFrame(animate);
+    };
+
+    animate();
+  </script>
+
+  <div class="survey-overlay" id="survey-overlay" aria-hidden="true">
+    <div class="survey-dialog survey-dialog--embed" role="dialog" aria-modal="true" aria-labelledby="survey-title">
+      <button class="survey-close" id="survey-close" type="button" aria-label="Close survey">&times;</button>
+      <p class="survey-eyebrow">JOIN US</p>
+      <h2 id="survey-title">基本信息</h2>
+      <iframe class="survey-frame" src="https://wj.qq.com/s2/28001977/gqir/" title="社团招新问卷"></iframe>
+      <div class="survey-frame-fallback">
+        <a class="button" href="https://wj.qq.com/s2/28001977/gqir/" target="_blank" rel="noopener">在新窗口打开问卷</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var overlay = document.getElementById("survey-overlay");
+      var closeBtn = document.getElementById("survey-close");
+      if (!overlay) return;
+
+      function openSurvey() {
+        overlay.classList.add("is-open");
+        overlay.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeSurvey() {
+        overlay.classList.remove("is-open");
+        overlay.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      document.querySelectorAll("[data-survey-open]").forEach(function (el) { el.addEventListener("click", function (event) { event.preventDefault(); openSurvey(); }); });
+      closeBtn.addEventListener("click", closeSurvey);
+
+      overlay.addEventListener("click", function (event) {
+        if (event.target === overlay) closeSurvey();
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && overlay.classList.contains("is-open")) closeSurvey();
+      });
+    })();
+  </script></body>
+</html>
